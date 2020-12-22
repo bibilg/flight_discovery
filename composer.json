@@ -5,5 +5,11 @@
         "phpunit/phpunit": "^9.5",
         "guzzlehttp/guzzle": "^7.2",
         "symfony/process": "^5.2"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php",
+            "src/utils.php"
+        ]
     }
 }
