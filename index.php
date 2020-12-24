@@ -31,7 +31,15 @@ Flight::map('render', function($template, $data=array()){
 /* ----- Starting routing ------*/
 
 Flight::route('/', function(){
-    echo 'Hello world!';
+
+    $books = getBooks();
+    $foo='Hello';
+
+    Flight::render('apiBooksView.twig', array(
+        'books' => $books,
+        'foo' => $foo
+    ));
+
 });
 
 Flight::route('/hello/@name', function($name){
@@ -57,5 +65,11 @@ Flight::route('/view_with_template', function(){
     Flight::render('child_view.twig');
 
 });
+
+Flight::route('/markdown_test', function(){
+    echo renderHTMLFromMarkdown(readFileContent('pages/test.md'));
+});
+
+
 
 Flight::start();

@@ -10,4 +10,8 @@ class UnitariesTest extends TestCase {
         $this->assertEquals(4, multiply(2, 2));
         $this->assertEquals(21, multiply(7, 3));
     }
+
+    public function test_readFileContent(){
+        $this->assertEquals("## Test", readFileContent("pages/test.md"));
+    }
 }

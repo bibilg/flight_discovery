@@ -1,0 +1,26 @@
+{% extends "base.twig" %} 
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="src/styles/reset.css" />
+<link rel="stylesheet" type="text/css" href="src/styles/main.css" />
+{% endblock %}
+
+{% block content %}
+    {% for book in books %}
+        <h1> {{ book.title }} </h1>
+            <img src="{{ book.cover }}" alt="{{ book.slug }}" /> 
+
+            
+            <h2> Ecrit par :</h2>
+                <p>{{ book.author }} </p>
+            <h2>Année de parution :</h2>
+                <p>{{ book.year }}</p>
+
+    <p> C'est le livre {{ loop.index }} </p>
+    {% endfor %}
+
+    
+{% endblock %}
+
