@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="src/styles/reset.css" />
+<link rel="stylesheet" type="text/css" href="src/styles/main.css" />
+{% endblock %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+
+
+    <h1> Liste users : </h1>
+        {% for user in users %}
+<div>
+            <h2>Name</h2>
+                <p>{{user.name}}</p>
+            <h2>FirstName</h2>
+                <p>{{user.firstname}}</p>
+            <h2>UserName</h2>
+                <p>{{user.username}}</p>
+</div>          
+        {% endfor %}        
+{% endblock %}

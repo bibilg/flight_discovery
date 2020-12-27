@@ -30,3 +30,7 @@ h2{
 p{
     margin-bottom: 2%;
 }
+
+div{
+   border: 1px solid black;
+}

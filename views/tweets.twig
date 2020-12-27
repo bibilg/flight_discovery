@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="src/styles/reset.css" />
+<link rel="stylesheet" type="text/css" href="src/styles/main.css" />
+{% endblock %}
+
+{% block title %}Tweets{% endblock %}
+
+{% block content %}
+    <h1> Liste Tweets : </h1>
+        {% for tweet in tweets %}
+<div>
+            <h2>Author :</h2>
+                <p>{{tweet.username}}</p>
+            <h2>Tweet :</h2>
+                <p>{{tweet.body}}</p>
+            <h2>Publication date :</h2>
+                <p>{{tweet.publication_date}}</p>
+</div>          
+        {% endfor %}        
+{% endblock %}

@@ -10,6 +10,11 @@ $twigConfig = array(
     'debug' => true,
 );
 
+// Filter how connect a data base 
+Flight::before('start', function(&$params, &$output){
+    ORM::configure('sqlite:tweets.sqlite3');
+});
+
 // Allow Flight to use twig :
 Flight::register('view', '\Twig\Environment', array($loader, $twigConfig), function ($twig) {
     $twig->addExtension(new \Twig\Extension\DebugExtension()); // Add the debug extension
@@ -69,6 +74,25 @@ Flight::route('/view_with_template', function(){
 Flight::route('/markdown_test', function(){
     echo renderHTMLFromMarkdown(readFileContent('pages/test.md'));
 });
+
+Flight::route('/users', function(){
+
+    $users = User::find_many();
+
+    Flight::render('users.twig', array(
+        'users' => $users
+    ));
+});
+
+Flight::route('/tweets', function(){
+
+    $liste_tweets = Tweet::liste_tweets();
+
+    Flight::render('tweets.twig', array(
+        'tweets' => $liste_tweets
+    ));
+});
+
 
 
 
