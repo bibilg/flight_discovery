@@ -9,14 +9,19 @@
 
 {% block content %}
     <h1> Liste Tweets : </h1>
-        {% for tweet in tweets %}
+        {% for test in tests %}
 <div>
             <h2>Author :</h2>
-                <p>{{tweet.username}}</p>
+                <p>{{tweet.username}}</p> <!-- Old way   -->
+                <p>{{test.username}}</p>
+                <p>{{test.user_id}}</p>
             <h2>Tweet :</h2>
-                <p>{{tweet.body}}</p>
+                <p>{{tweet.body}}</p> <!-- -->
+                <p>{{test.body}}</p>
             <h2>Publication date :</h2>
-                <p>{{tweet.publication_date}}</p>
+                <p>{{tweet.publication_date}}</p> <!-- -->
+                <p>{{test.publication_date}}</p>
+
 </div>          
-        {% endfor %}        
+        {% endfor %}     
 {% endblock %}

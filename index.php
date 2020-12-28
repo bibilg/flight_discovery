@@ -87,9 +87,13 @@ Flight::route('/users', function(){
 Flight::route('/tweets', function(){
 
     $liste_tweets = Tweet::liste_tweets();
+    $tests = Tweet::join('users' , array('users.id' , '=' , 'tweets.user_id'))
+    ->find_many();
+
 
     Flight::render('tweets.twig', array(
-        'tweets' => $liste_tweets
+        'tweets' => $liste_tweets,
+        'tests' => $tests
     ));
 });
 
