@@ -59,3 +59,4 @@ class Tweet extends Model
 // See doc for many-to-many
 
 /* Querying */
+//It's almost the same system as idiorm : https://idiorm.readthedocs.io/en/latest/querying.html

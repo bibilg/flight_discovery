@@ -98,6 +98,22 @@ Flight::route('/tweets', function(){
 });
 
 
+Flight::route('/tweets/@username', function($username){
+
+    // SELECT * FROM users WHERE username = $username;
+    $user = User::where('username' , $username)
+    ->findOne();
+
+    // SELECT * FROM tweets WHERE user_id = $user->id;
+    $tweets = Tweet::where('user_id' , $user->id)
+    ->find_many();
+    
+    Flight::render('tweetsUser.twig', array(
+            'tweets' => $tweets,
+            'user' => $user
+    ));
+});
+
 
 
 Flight::start();
