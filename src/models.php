@@ -6,14 +6,16 @@ class User extends Model
 
     public function tweets() {
         return $this->has_many('Tweet'); // Note we use the model name literally - not a pluralised version
+        // return $this->has_many('Tweet' , 'user_id'); // The second argument specify the name of the foreign key column
     }
     /* It work as fallow : */
     /*
     // Select a particular user from the database
     $user = Model::factory('User')->find_one($user_id);
+    or $user = User::where('username', $user_lien)->find_one();
 
     // Find the posts associated with the user
-    $posts = $user->posts()->find_many();
+    $posts = $user->tweets()->find_many();
      */
 }
 

@@ -90,7 +90,6 @@ Flight::route('/tweets', function(){
     $tests = Tweet::join('users' , array('users.id' , '=' , 'tweets.user_id'))
     ->find_many();
 
-
     Flight::render('tweets.twig', array(
         'tweets' => $liste_tweets,
         'tests' => $tests
@@ -113,6 +112,20 @@ Flight::route('/tweets/@username', function($username){
             'user' => $user
     ));
 });
+
+// OR WE CAN MAKE LIKE THIS : 
+/*
+  Flight::route('/@user_lien', function($user_lien)
+  {
+    $user = User::where('username', $user_lien)->find_one(); 
+    $tweets = $user->tweets()->find_many();
+    Flight::view()->display('unique.twig', array(
+      'tweets' => $tweets,
+      'utilisateur' => $user->username
+    ));
+  });
+
+*/
 
 
 
