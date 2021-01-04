@@ -114,6 +114,13 @@ Flight::route('/tweets/@username', function($username){
     ));
 });
 
+Flight::route('/api/helloworld', function(){
+    $data = [
+        'data' => 'Hello World!',
+    ];
+    Flight::json($data);
+});
+
 
 
 Flight::start();
