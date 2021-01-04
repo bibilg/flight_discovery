@@ -106,26 +106,13 @@ Flight::route('/tweets/@username', function($username){
     // SELECT * FROM tweets WHERE user_id = $user->id;
     $tweets = Tweet::where('user_id' , $user->id)
     ->find_many();
+    // or $tweets = $user->tweets()->find_many(); // See function in models
     
     Flight::render('tweetsUser.twig', array(
             'tweets' => $tweets,
             'user' => $user
     ));
 });
-
-// OR WE CAN MAKE LIKE THIS : 
-/*
-  Flight::route('/@user_lien', function($user_lien)
-  {
-    $user = User::where('username', $user_lien)->find_one(); 
-    $tweets = $user->tweets()->find_many();
-    Flight::view()->display('unique.twig', array(
-      'tweets' => $tweets,
-      'utilisateur' => $user->username
-    ));
-  });
-
-*/
 
 
 
