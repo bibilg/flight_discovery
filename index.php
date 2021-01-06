@@ -52,7 +52,7 @@ Flight::route('/hello/@name', function($name){
 });
 
 
-Flight::route('/first_view/', function(){
+Flight::route('/first_view', function(){
     $data = [ // data is an array 
         'contenu' => 'Hello World!',
         'name' => 'Ben Kenobi',
@@ -118,6 +118,35 @@ Flight::route('/api/helloworld', function(){
     $data = [
         'data' => 'Hello World!',
     ];
+    Flight::json($data);
+});
+
+Flight::route('/api/helloworld/@name', function($name){
+    $data = array(
+        'data' => 'Hello ' . $name
+    );
+    Flight::json($data);
+});
+
+Flight::route('/api/users', function(){
+
+    $data = array(
+    );
+
+    $users = User::find_many();
+
+    foreach($users as $user)
+    {
+        array_push(
+            $data,array(
+                'name' => $user->name,
+                'firstname' => $user->firstname,
+                'username' => $user->username
+            )
+        );
+    }
+
+
     Flight::json($data);
 });
 
