@@ -135,10 +135,13 @@ Flight::route('/api/users', function(){
 
     $users = User::find_many();
 
-    foreach($users as $user)
+    var_dump($users);
+
+    foreach($users as $key => $user)
     {
         array_push(
             $data,array(
+                'id' => $user->id,
                 'name' => $user->name,
                 'firstname' => $user->firstname,
                 'username' => $user->username
@@ -148,6 +151,33 @@ Flight::route('/api/users', function(){
 
 
     Flight::json($data);
+});
+
+Flight::route('/api/user/@username', function($username){
+
+    // SELECT * FROM users WHERE username = $username;
+    $user = User::where('username' , $username)->findOne();
+
+    $tweets = $user->tweets()->find_many(); // See function in models
+
+    $tweets_array=array();
+
+    foreach($tweets as $key => $tweet) 
+    {
+        $tweets_array[$key]=array(
+            'id' => $tweet->id,
+            'date_publication' => $tweet->publication_date,
+            'publication' => $tweet->body
+        );
+    }
+
+    $data=array(
+        'username' => $user->username,
+        'tweets' => $tweets_array
+    );
+
+    Flight::json($data);
+
 });
 
 

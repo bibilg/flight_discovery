@@ -5,8 +5,9 @@ class User extends Model
     public static $_table = 'Users';
 
     public function tweets() {
-        return $this->has_many('Tweet'); // Note we use the model name literally - not a pluralised version
+        return $this->has_many('Tweet','user_id'); // Note we use the model name literally - not a pluralised version
         // return $this->has_many('Tweet' , 'user_id'); // The second argument specify the name of the foreign key column
+        // The second argument is mandatory here, because otherwise it looks for 'users_id' because of the table name
     }
     /* It work as fallow : */
     /*
